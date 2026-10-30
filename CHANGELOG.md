@@ -9,7 +9,7 @@ All notable changes to this project are documented in this file. The format is b
 
 ---
 
-## [1.1.0] - 2026-01-15
+## [1.1.0] - 2026-10-31
 
 ### ✨ Added / 新增 / 新增
 
@@ -23,7 +23,7 @@ All notable changes to this project are documented in this file. The format is b
 
 ---
 
-## [1.0.0] - 2026-01-15
+## [1.0.0] - 2026-10-31
 
 首个正式版本 / First stable release / 首個正式版本。
 
