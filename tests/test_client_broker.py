@@ -54,6 +54,20 @@ class TestConnection(BrokerTestCase):
             client.connect(self.host, self.port, timeout=5.0)
             self.assertTrue(client.connected)
 
+    def test_broker_stop_alias_and_context_manager(self):
+        """``start()``/``stop()`` and the ``with`` form must both work."""
+        broker = MiniBroker(host="127.0.0.1", port=0)
+        broker.start_background()
+        broker.stop()                      # alias of shutdown()
+        self.assertEqual(broker.sessions, {})
+
+        with MiniBroker(host="127.0.0.1", port=0) as second:
+            client = MQTTClient(client_id="cm", timeout=5.0)
+            client.connect(second.host, second.port, timeout=5.0)
+            self.assertTrue(client.connected)
+            client.disconnect()
+        self.assertIsNone(second._sock)
+
     def test_ping(self):
         client = self.client(client_id="ping")
         rtt = client.ping(timeout=5.0)

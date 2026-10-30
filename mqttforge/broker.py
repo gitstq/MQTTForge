@@ -202,6 +202,10 @@ class MiniBroker:
                 pass
         self.retained.clear()
 
+    def stop(self):
+        """Alias of :meth:`shutdown` so ``start()``/``stop()`` read as a pair."""
+        self.shutdown()
+
     def __enter__(self):
         self.start()
         return self
