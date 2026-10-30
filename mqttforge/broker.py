@@ -380,6 +380,10 @@ class MiniBroker:
         if qos > 0:
             packet_id = session.next_packet_id()
             session.outbound[packet_id] = packet
+        # Count before the write so that "the client already has it" always
+        # implies "delivered >= 1"; a failed send rolls the counter back.
+        with self._lock:
+            self.stats["delivered"] += 1
         ok = session.send(
             Publish(
                 topic=packet.topic,
@@ -389,10 +393,9 @@ class MiniBroker:
                 packet_id=packet_id,
             )
         )
-        if ok:
+        if not ok:
             with self._lock:
-                self.stats["delivered"] += 1
-        else:
+                self.stats["delivered"] -= 1
             if packet_id is not None:
                 session.outbound.pop(packet_id, None)
 
