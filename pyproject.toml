@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mqttforge"
+version = "1.0.0"
+description = "Zero-dependency MQTT 3.1.1 toolkit: codec, client, embedded broker and CLI for Python"
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "gitstq" }]
+keywords = [
+    "mqtt",
+    "mqtt-client",
+    "mqtt-broker",
+    "iot",
+    "protocol",
+    "pubsub",
+    "qos",
+    "zero-dependency",
+    "cli",
+    "telemetry",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Communications",
+    "Topic :: Internet",
+    "Topic :: Software Development :: Testing",
+    "Topic :: System :: Networking",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["build>=0.10", "wheel"]
+
+[project.urls]
+Homepage = "https://github.com/gitstq/MQTTForge"
+Repository = "https://github.com/gitstq/MQTTForge"
+Issues = "https://github.com/gitstq/MQTTForge/issues"
+
+[project.scripts]
+mqttforge = "mqttforge.cli:main"
+
+[tool.setuptools]
+packages = ["mqttforge"]
+
+[tool.setuptools.package-data]
+mqttforge = ["py.typed"]

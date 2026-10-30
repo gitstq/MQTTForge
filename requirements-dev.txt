@@ -1,0 +1,7 @@
+# Development-only tooling. Not required to use MQTTForge at runtime.
+#
+#   build / wheel  -> used by build.sh and `make build` to produce dist artifacts
+#
+# Tests run with the standard library `unittest` runner, so pytest is optional.
+build>=0.10
+wheel

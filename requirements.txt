@@ -1,0 +1,8 @@
+# MQTTForge has ZERO runtime dependencies by design.
+#
+# Everything - the wire codec, the client, the embedded broker and the CLI -
+# is implemented on top of the Python standard library only.
+# This file is kept so that `pip install -r requirements.txt` is a no-op and
+# dependency scanners do not flag an empty environment.
+#
+# Optional, development-only tooling lives in requirements-dev.txt.
