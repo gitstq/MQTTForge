@@ -10,8 +10,8 @@ Codec · Client · Embedded Broker · CLI — four capabilities, one package
 [![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen?logo=pypi)](https://github.com/gitstq/MQTTForge)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 [![Protocol](https://img.shields.io/badge/MQTT-3.1.1-orange)](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html)
-[![Tests](https://img.shields.io/badge/tests-92%20passing-brightgreen)](./tests)
-[![Version](https://img.shields.io/badge/version-v1.0.0-blueviolet)](./CHANGELOG.md)
+[![Tests](https://img.shields.io/badge/tests-93%20passing-brightgreen)](./tests)
+[![Version](https://img.shields.io/badge/version-v1.1.0-blueviolet)](./CHANGELOG.md)
 
 **🌐 Language**
 
@@ -88,7 +88,7 @@ MQTTForge borrows the **product thinking** of Mosquitto, paho-mqtt and hbmqtt, b
 ### 📦 Engineering
 - **🪶 Zero runtime dependencies** — standard library only; `pip install` pulls in nothing
 - **🐍 Python 3.8+** — 3.8 / 3.9 / 3.10 / 3.11 / 3.12
-- **🧪 92 unit and integration tests** — all offline and repeatable
+- **🧪 93 unit and integration tests** — all offline and repeatable
 - **📝 Type hints** — ships a `py.typed` marker
 - **🖥️ Cross-platform** — build scripts for Linux, macOS and Windows
 
@@ -501,8 +501,10 @@ print(broker.stats)
 # {'connections': 3, 'published': 12, 'delivered': 12, 'retained': 1}
 print(broker.subscriber_count())         # live sessions
 
-broker.shutdown()
+broker.shutdown()   # broker.stop() is an alias
 ```
+
+> 💡 `MiniBroker` also works as a context manager and shuts itself down on exit; `stop()` is an alias of `shutdown()` so it pairs naturally with `start()`.
 
 **In unit tests:**
 
@@ -666,14 +668,14 @@ MQTTForge is a **library + CLI** project, so it ships primarily as a **PyPI pack
 
 ```bash
 pip install mqttforge                 # from PyPI
-pip install mqttforge==1.0.0          # pin a version
+pip install mqttforge==1.1.0          # pin a version
 pip install -e .                      # editable install for development
 ```
 
 That gives you the `mqttforge` console entry point:
 
 ```bash
-mqttforge --version      # → mqttforge 1.0.0
+mqttforge --version      # → mqttforge 1.1.0
 ```
 
 ### 🏗️ Build from source
@@ -696,8 +698,8 @@ make clean                 # remove artifacts
 Artifacts land in `dist/`:
 
 ```
-dist/mqttforge-1.0.0.tar.gz                  # source distribution
-dist/mqttforge-1.0.0-py3-none-any.whl        # universal wheel (pure Python)
+dist/mqttforge-1.1.0.tar.gz                  # source distribution
+dist/mqttforge-1.1.0-py3-none-any.whl        # universal wheel (pure Python)
 ```
 
 > 💡 Because MQTTForge is **pure Python with zero dependencies**, the wheel is `py3-none-any`: one artifact for every platform and Python version — no per-platform builds needed.

@@ -1,6 +1,6 @@
 """Version metadata for MQTTForge."""
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 # Protocol level advertised in CONNECT: 4 == MQTT 3.1.1 (OASIS standard).
 PROTOCOL_NAME = "MQTT"

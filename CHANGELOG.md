@@ -9,6 +9,20 @@ All notable changes to this project are documented in this file. The format is b
 
 ---
 
+## [1.1.0] - 2026-01-15
+
+### ✨ Added / 新增 / 新增
+
+- `MiniBroker.stop()`：`shutdown()` 的别名，让 `start()` / `stop()` 成对书写更自然
+- `MiniBroker` 上下文管理器用法的单元测试覆盖（`with MiniBroker() as b:` 退出后自动关闭监听套接字）
+
+### 📝 Changed / 调整 / 調整
+
+- 测试总数由 92 项增至 **93 项**
+- 三语 README 同步更新测试徽章、`stop()` 说明与安装示例版本号
+
+---
+
 ## [1.0.0] - 2026-01-15
 
 首个正式版本 / First stable release / 首個正式版本。

@@ -10,8 +10,8 @@
 [![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen?logo=pypi)](https://github.com/gitstq/MQTTForge)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 [![Protocol](https://img.shields.io/badge/MQTT-3.1.1-orange)](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html)
-[![Tests](https://img.shields.io/badge/tests-92%20passing-brightgreen)](./tests)
-[![Version](https://img.shields.io/badge/version-v1.0.0-blueviolet)](./CHANGELOG.md)
+[![Tests](https://img.shields.io/badge/tests-93%20passing-brightgreen)](./tests)
+[![Version](https://img.shields.io/badge/version-v1.1.0-blueviolet)](./CHANGELOG.md)
 
 **🌐 語言切換 / Language / 语言切换**
 
@@ -88,7 +88,7 @@ MQTTForge 借鏡了 Mosquitto、paho-mqtt、hbmqtt 的**產品思維**，但程�
 ### 📦 工程化
 - **🪶 零執行時依賴** —— 只用標準程式庫，`pip install` 不會拖進任何第三方套件
 - **🐍 Python 3.8+** —— 涵蓋 3.8 / 3.9 / 3.10 / 3.11 / 3.12
-- **🧪 92 個單元與整合測試** —— 全部離線、可重複執行
+- **🧪 93 個單元與整合測試** —— 全部離線、可重複執行
 - **📝 型別標註** —— 附帶 `py.typed` 標記
 - **🖥️ 跨平台** —— Linux / macOS / Windows 建置指令碼齊備
 
@@ -501,8 +501,10 @@ print(broker.stats)
 # {'connections': 3, 'published': 12, 'delivered': 12, 'retained': 1}
 print(broker.subscriber_count())         # 目前線上工作階段數
 
-broker.shutdown()
+broker.shutdown()   # 也可寫 broker.stop()，兩者等價
 ```
+
+> 💡 `MiniBroker` 同時支援 `with` 語句，結束時自動 `shutdown()`；`stop()` 是 `shutdown()` 的別名，方便與 `start()` 成對書寫。
 
 **在單元測試裡用（`unittest` 範例）：**
 
@@ -666,14 +668,14 @@ MQTTForge 屬於**工具程式庫 + 命令列**類型，因此以 **PyPI 套件*
 
 ```bash
 pip install mqttforge                 # 從 PyPI 安裝
-pip install mqttforge==1.0.0          # 鎖定版本
+pip install mqttforge==1.1.0          # 鎖定版本
 pip install -e .                      # 從原始碼可編輯安裝（開發用）
 ```
 
 安裝後即可取得 `mqttforge` 命令列進入點：
 
 ```bash
-mqttforge --version      # → mqttforge 1.0.0
+mqttforge --version      # → mqttforge 1.1.0
 ```
 
 ### 🏗️ 從原始碼建置發行包
@@ -696,8 +698,8 @@ make clean                 # 清理產物
 產物輸出在 `dist/`：
 
 ```
-dist/mqttforge-1.0.0.tar.gz                  # 原始碼發行包
-dist/mqttforge-1.0.0-py3-none-any.whl        # 通用 wheel（純 Python，全平台通用）
+dist/mqttforge-1.1.0.tar.gz                  # 原始碼發行包
+dist/mqttforge-1.1.0-py3-none-any.whl        # 通用 wheel（純 Python，全平台通用）
 ```
 
 > 💡 因為 MQTTForge 是**純 Python 且零依賴**，建置出的 wheel 是 `py3-none-any` —— 一個包通吃所有平台與 Python 版本，不需要按平台分別封裝。

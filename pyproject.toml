@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mqttforge"
-version = "1.0.0"
+version = "1.1.0"
 description = "Zero-dependency MQTT 3.1.1 toolkit: codec, client, embedded broker and CLI for Python"
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.8"
